@@ -87,8 +87,7 @@ export default function GenerateurMentionInfo() {
           <p className="text-gray-600">Créez votre mention d'information conforme RGPD</p>
         </div>
 
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-green-100 p-6">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Formulaire gauche */}
         <div className="bg-white rounded-lg shadow-lg p-6 overflow-y-auto max-h-[calc(100vh-50px)]">
           <div className="space-y-4">
@@ -287,8 +286,7 @@ export default function GenerateurMentionInfo() {
             )}
           </div>
         </div>
-      </div>
-    </div>
+        </div>
 
         <div className="mt-6 bg-yellow-50 border border-yellow-200 rounded-lg p-4">
           <p className="text-sm text-yellow-800">
