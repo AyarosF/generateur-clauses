@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Download } from 'lucide-react';
+import { Download, FileText } from 'lucide-react';
 import { genererMentionInfo } from '../utils/genererMentionInfo';
 
 export default function GenerateurMentionInfo() {
@@ -76,11 +76,21 @@ export default function GenerateurMentionInfo() {
   };
 
   return (
+
+     <div className="min-h-screen bg-gradient-to-br from-green-50 to-green-100 p-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-8">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <FileText className="w-10 h-10 text-green-600" />
+            <h1 className="text-4xl font-bold text-gray-800">Générateur mention d'information RGPD</h1>
+          </div>
+          <p className="text-gray-600">Créez votre mention d'information conforme RGPD</p>
+        </div>
+
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-green-100 p-6">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-6">
         {/* Formulaire gauche */}
         <div className="bg-white rounded-lg shadow-lg p-6 overflow-y-auto max-h-[calc(100vh-50px)]">
-          <h1 className="text-3xl font-bold mb-6 text-gray-800">Générateur de mention d'information</h1>
           <div className="space-y-4">
 
             {/* Responsable */}
@@ -273,6 +283,16 @@ export default function GenerateurMentionInfo() {
           </div>
         </div>
       </div>
+    </div>
+
+        <div className="mt-6 bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+          <p className="text-sm text-yellow-800">
+                        ⚠️ <strong>Avertissement :</strong> Ce document est un modèle générique à adapter à votre situation spécifique. 
+            Il ne constitue pas un conseil juridique. Nous recommandons fortement de consulter un avocat spécialisé 
+            en protection des données pour valider et personnaliser ce document selon vos besoins.
+          </p>
+        </div>
+    </div>
     </div>
   );
 }
