@@ -278,7 +278,12 @@ export default function GenerateurMentionInfo() {
             {mentionGeneree ? (
               <pre className="whitespace-pre-wrap font-mono text-sm text-gray-800">{mentionGeneree}</pre>
             ) : (
-              <p className="text-gray-400 text-center mt-20">Remplissez le formulaire et cliquez sur "Générer la mention"</p>
+              <div className="flex items-center justify-center h-full text-gray-400">
+                <div className="text-center">
+                    <FileText className="w-16 h-16 mx-auto mb-4 opacity-50" />
+                    <p>Remplissez le formulaire et cliquez sur "Générer la mention"</p>
+                </div>
+            </div>
             )}
           </div>
         </div>
