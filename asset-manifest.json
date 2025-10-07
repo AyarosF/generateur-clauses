@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/generateur-clauses/static/css/main.fe41b4b5.css",
+    "main.js": "/generateur-clauses/static/js/main.df9f5103.js",
+    "static/js/453.98dc7457.chunk.js": "/generateur-clauses/static/js/453.98dc7457.chunk.js",
+    "index.html": "/generateur-clauses/index.html",
+    "main.fe41b4b5.css.map": "/generateur-clauses/static/css/main.fe41b4b5.css.map",
+    "main.df9f5103.js.map": "/generateur-clauses/static/js/main.df9f5103.js.map",
+    "453.98dc7457.chunk.js.map": "/generateur-clauses/static/js/453.98dc7457.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fe41b4b5.css",
+    "static/js/main.df9f5103.js"
+  ]
+}
