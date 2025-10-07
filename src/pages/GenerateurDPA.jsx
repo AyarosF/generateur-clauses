@@ -28,8 +28,7 @@ export default function GenerateurDPA() {
     "Données de contact (email, téléphone)",
     "Données de connexion (IP, cookies)",
     "Données financières",
-    "Données de santé",
-    "Données sensibles (origine, opinions)"
+    "Données de santé"
   ];
 
   const categoriesPersonnesOptions = [
@@ -90,7 +89,7 @@ export default function GenerateurDPA() {
               type="checkbox"
               checked={formData[mainKey].includes(option)}
               onChange={() => handleCheckboxChange(mainKey, option)}
-              className="w-4 h-4 text-indigo-600 rounded focus:ring-indigo-500"
+              className="w-4 h-4 text-green-600 rounded focus:ring-green-500"
             />
             <span className="text-sm text-gray-700">{option}</span>
           </label>
@@ -102,7 +101,7 @@ export default function GenerateurDPA() {
             placeholder="Autres..."
             value={formData[autresKey]}
             onChange={(e) => setFormData(prev => ({ ...prev, [autresKey]: e.target.value }))}
-            className="flex-1 px-2 py-1 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-sm"
+            className="flex-1 px-2 py-1 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm"
           />
           <button
             type="button"
@@ -116,7 +115,7 @@ export default function GenerateurDPA() {
                 }));
               }
             }}
-            className="px-2 py-1 bg-indigo-600 text-white rounded-lg text-sm hover:bg-indigo-700"
+            className="px-2 py-1 bg-green-600 text-white rounded-lg text-sm hover:bg-green-700"
           >
             Ajouter
           </button>
@@ -126,12 +125,12 @@ export default function GenerateurDPA() {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-6">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 to-green-100 p-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <FileText className="w-10 h-10 text-indigo-600" />
+            <FileText className="w-10 h-10 text-green-600" />
             <h1 className="text-4xl font-bold text-gray-800">Générateur DPA RGPD</h1>
           </div>
           <p className="text-gray-600">Créez votre accord de sous-traitance conforme RGPD</p>
@@ -141,6 +140,7 @@ export default function GenerateurDPA() {
         <div className="grid md:grid-cols-2 gap-6">
           {/* Formulaire */}
           <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col max-h-[calc(100vh-50px)] overflow-y-auto space-y-4">
+            {/* Inputs texte */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Responsable du traitement</label>
               <input
@@ -148,7 +148,7 @@ export default function GenerateurDPA() {
                 name="responsableTraitement"
                 value={formData.responsableTraitement}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
               />
             </div>
             <div>
@@ -158,7 +158,7 @@ export default function GenerateurDPA() {
                 name="sousTraitant"
                 value={formData.sousTraitant}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
               />
             </div>
             <div>
@@ -168,7 +168,7 @@ export default function GenerateurDPA() {
                 name="objetContrat"
                 value={formData.objetContrat}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                 placeholder="Ex : Hébergement de données clients"
               />
             </div>
@@ -179,7 +179,7 @@ export default function GenerateurDPA() {
                 name="natureTraitement"
                 value={formData.natureTraitement}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                 placeholder="Ex : Collecte et stockage"
               />
             </div>
@@ -190,7 +190,7 @@ export default function GenerateurDPA() {
                 value={formData.finalite}
                 onChange={handleChange}
                 rows="2"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                 placeholder="Ex : Gestion de la relation client"
               />
             </div>
@@ -205,7 +205,7 @@ export default function GenerateurDPA() {
                 name="dureeConservation"
                 value={formData.dureeConservation}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                 placeholder="Ex : 3 ans à partir de la fin du contrat"
               />
             </div>
@@ -218,7 +218,7 @@ export default function GenerateurDPA() {
                 name="transfertHorsUE"
                 value={formData.transfertHorsUE}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
               >
                 <option value="non">Non</option>
                 <option value="oui">Oui</option>
@@ -234,7 +234,7 @@ export default function GenerateurDPA() {
                     name="paysTransfert"
                     value={formData.paysTransfert}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                   />
                 </div>
                 <div>
@@ -244,20 +244,18 @@ export default function GenerateurDPA() {
                     value={formData.garantiesTransfert}
                     onChange={handleChange}
                     rows="3"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                   />
                 </div>
               </>
             )}
 
-            {/* Boutons */}
-            
-              <button
-                onClick={handleGenererClauseDPA}
-                className="w-full md:flex-1 bg-indigo-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-indigo-700 transition-colors shadow-md"
-              >
-                Générer le DPA
-              </button>
+            <button
+              onClick={handleGenererClauseDPA}
+              className="w-full md:flex-1 bg-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 transition-colors shadow-md"
+            >
+              Générer le DPA
+            </button>
           </div>
 
           {/* Aperçu */}

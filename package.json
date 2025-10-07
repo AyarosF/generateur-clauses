@@ -2,7 +2,7 @@
   "name": "generateur-clauses",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://ayarosf.github.io/generateur-clauses",
+  "homepage": "https://username.github.io/generateur-conformite/",
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
@@ -12,7 +12,8 @@
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.9.3",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "xlsx": "^0.18.5"
   },
   "scripts": {
     "start": "react-scripts start",
