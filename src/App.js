@@ -6,7 +6,7 @@ import GenerateurRegistreSimplifie from './pages/GenerateurRegistre'; // ✅ ajo
 
 function App() {
   return (
-    <BrowserRouter basename="/generateur-clauses">
+    <BrowserRouter basename="/generateur-conformite">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/dpa" element={<GenerateurDPA />} />
