@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FileText, Download, RefreshCw } from 'lucide-react';
+import { FileText, Download } from 'lucide-react';
 import { genererClauseDPA } from '../utils/genererClauseDPA';
 
 export default function GenerateurDPA() {
@@ -68,28 +68,6 @@ export default function GenerateurDPA() {
     }));
   };
 
-
-  const reinitialiser = () => {
-    setFormData({
-      responsableTraitement: '',
-      sousTraitant: '',
-      objetContrat: '',
-      natureTraitement: '',
-      finalite: '',
-      categoriesDonnees: [],
-      autresCategoriesDonnees: '',
-      categoriesPersonnes: [],
-      autresCategoriesPersonnes: '',
-      dureeConservation: '',
-      transfertHorsUE: 'non',
-      paysTransfert: '',
-      garantiesTransfert: '',
-      mesuresSecurite: [],
-      autresMesuresSecurite: ''
-    });
-    setClauseGeneree('');
-  };
-
   const telecharger = () => {
     const element = document.createElement('a');
     const file = new Blob([clauseGeneree], { type: 'text/plain' });
@@ -100,58 +78,57 @@ export default function GenerateurDPA() {
     document.body.removeChild(element);
   };
 
-const renderCheckboxSection = (label, options, mainKey, autresKey) => (
-  <div>
-    <label className="block text-sm font-medium text-gray-700 mb-2">{label}</label>
-    <div className="space-y-2 max-h-48 overflow-y-auto border border-gray-200 rounded-lg p-3">
-      {options.concat(
-        formData[mainKey].filter(item => !options.includes(item))
-      ).map(option => (
-        <label key={option} className="flex items-center space-x-2 cursor-pointer hover:bg-gray-50 p-1 rounded">
-          <input
-            type="checkbox"
-            checked={formData[mainKey].includes(option)}
-            onChange={() => handleCheckboxChange(mainKey, option)}
-            className="w-4 h-4 text-indigo-600 rounded focus:ring-indigo-500"
-          />
-          <span className="text-sm text-gray-700">{option}</span>
-        </label>
-      ))}
+  const renderCheckboxSection = (label, options, mainKey, autresKey) => (
+    <div>
+      <label className="block text-sm font-medium text-gray-700 mb-2">{label}</label>
+      <div className="space-y-2 max-h-48 overflow-y-auto border border-gray-200 rounded-lg p-3">
+        {options.concat(
+          formData[mainKey].filter(item => !options.includes(item))
+        ).map(option => (
+          <label key={option} className="flex items-center space-x-2 cursor-pointer hover:bg-gray-50 p-1 rounded">
+            <input
+              type="checkbox"
+              checked={formData[mainKey].includes(option)}
+              onChange={() => handleCheckboxChange(mainKey, option)}
+              className="w-4 h-4 text-indigo-600 rounded focus:ring-indigo-500"
+            />
+            <span className="text-sm text-gray-700">{option}</span>
+          </label>
+        ))}
 
-      <div className="flex items-center space-x-2 mt-2">
-        <input
-          type="text"
-          placeholder="Autres..."
-          value={formData[autresKey]}
-          onChange={(e) => setFormData(prev => ({ ...prev, [autresKey]: e.target.value }))}
-          className="flex-1 px-2 py-1 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-sm"
-        />
-        <button
-          type="button"
-          onClick={() => {
-            const newItem = formData[autresKey]?.trim();
-            if (newItem && !formData[mainKey].includes(newItem)) {
-              setFormData(prev => ({
-                ...prev,
-                [mainKey]: [...prev[mainKey], newItem],
-                [autresKey]: ''  // <-- Vide le champ après ajout
-              }));
-            }
-          }}
-          className="px-2 py-1 bg-indigo-600 text-white rounded-lg text-sm hover:bg-indigo-700"
-        >
-          Ajouter
-        </button>
+        <div className="flex items-center space-x-2 mt-2">
+          <input
+            type="text"
+            placeholder="Autres..."
+            value={formData[autresKey]}
+            onChange={(e) => setFormData(prev => ({ ...prev, [autresKey]: e.target.value }))}
+            className="flex-1 px-2 py-1 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-sm"
+          />
+          <button
+            type="button"
+            onClick={() => {
+              const newItem = formData[autresKey]?.trim();
+              if (newItem && !formData[mainKey].includes(newItem)) {
+                setFormData(prev => ({
+                  ...prev,
+                  [mainKey]: [...prev[mainKey], newItem],
+                  [autresKey]: '' 
+                }));
+              }
+            }}
+            className="px-2 py-1 bg-indigo-600 text-white rounded-lg text-sm hover:bg-indigo-700"
+          >
+            Ajouter
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-);
-
-
+  );
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-6">
       <div className="max-w-7xl mx-auto">
+        {/* Header */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-3 mb-4">
             <FileText className="w-10 h-10 text-indigo-600" />
@@ -160,9 +137,10 @@ const renderCheckboxSection = (label, options, mainKey, autresKey) => (
           <p className="text-gray-600">Créez votre accord de sous-traitance conforme RGPD</p>
         </div>
 
+        {/* Grid Formulaire + Aperçu */}
         <div className="grid md:grid-cols-2 gap-6">
           {/* Formulaire */}
-          <div className="bg-white rounded-lg shadow-lg p-6 space-y-4">
+          <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col max-h-[calc(100vh-50px)] overflow-y-auto space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Responsable du traitement</label>
               <input
@@ -272,26 +250,19 @@ const renderCheckboxSection = (label, options, mainKey, autresKey) => (
               </>
             )}
 
-            <div className="flex gap-3 mt-6">
+            {/* Boutons */}
+            
               <button
                 onClick={handleGenererClauseDPA}
-                className="flex-1 bg-indigo-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-indigo-700 transition-colors shadow-md"
+                className="w-full md:flex-1 bg-indigo-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-indigo-700 transition-colors shadow-md"
               >
                 Générer le DPA
               </button>
-              <button
-                onClick={reinitialiser}
-                className="flex items-center gap-2 bg-gray-200 text-gray-700 py-3 px-6 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
-              >
-                <RefreshCw className="w-4 h-4" />
-                Réinitialiser
-              </button>
-            </div>
           </div>
 
           {/* Aperçu */}
-          <div className="bg-white rounded-lg shadow-lg p-6">
-            <div className="flex items-center justify-between mb-4">
+          <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col max-h-[calc(100vh-50px)] overflow-y-auto">
+            <div className="flex justify-between items-center mb-4">
               <h2 className="text-2xl font-semibold text-gray-800">Aperçu du DPA</h2>
               {clauseGeneree && (
                 <button
@@ -303,7 +274,7 @@ const renderCheckboxSection = (label, options, mainKey, autresKey) => (
                 </button>
               )}
             </div>
-            <div className="bg-gray-50 rounded-lg p-6 h-[calc(100vh-250px)] overflow-y-auto">
+            <div className="bg-gray-50 rounded-lg p-4 flex-1 overflow-y-auto">
               {clauseGeneree ? (
                 <pre className="text-xs text-gray-800 whitespace-pre-wrap font-mono leading-relaxed">
                   {clauseGeneree}
@@ -320,9 +291,10 @@ const renderCheckboxSection = (label, options, mainKey, autresKey) => (
           </div>
         </div>
 
+        {/* Avertissement */}
         <div className="mt-6 bg-yellow-50 border border-yellow-200 rounded-lg p-4">
           <p className="text-sm text-yellow-800">
-                        ⚠️ <strong>Avertissement :</strong> Ce document est un modèle générique à adapter à votre situation spécifique. 
+            ⚠️ <strong>Avertissement :</strong> Ce document est un modèle générique à adapter à votre situation spécifique. 
             Il ne constitue pas un conseil juridique. Nous recommandons fortement de consulter un avocat spécialisé 
             en protection des données pour valider et personnaliser ce contrat selon vos besoins.
           </p>
